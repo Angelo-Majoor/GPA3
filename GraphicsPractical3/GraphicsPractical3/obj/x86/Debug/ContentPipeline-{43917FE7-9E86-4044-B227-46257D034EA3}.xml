@@ -1,0 +1,134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent xmlns:Pipeline="Microsoft.Xna.Framework.Content.Pipeline">
+  <Asset Type="Pipeline:BuildItemCollection">
+    <Item>
+      <Source>Models\Teapot.fbx</Source>
+      <Name>Models\Teapot</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\Models\Teapot.xnb</Output>
+      <Time>2015-05-12T09:14:44.2454467+02:00</Time>
+      <Dependency>
+        <Key>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\Models\Teapot_0.xml</Key>
+        <Value>2015-06-14T16:39:39.4744121+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\Bunny.fbx</Source>
+      <Name>Models\Bunny</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\Models\Bunny.xnb</Output>
+      <Time>2015-06-14T16:29:32.9187191+02:00</Time>
+      <Dependency>
+        <Key>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\Models\Bunny_0.xml</Key>
+        <Value>2015-06-14T16:39:39.7914303+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Models\Femalehead.fbx</Source>
+      <Name>Models\Femalehead</Name>
+      <Importer>FbxImporter</Importer>
+      <Processor>ModelProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\Models\Femalehead.xnb</Output>
+      <Time>2015-06-14T16:30:04.9045486+02:00</Time>
+      <Dependency>
+        <Key>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\Models\Femalehead_0.xml</Key>
+        <Value>2015-06-14T16:39:40.1704519+02:00</Value>
+      </Dependency>
+    </Item>
+    <Item>
+      <Source>Effects\Effect1.fx</Source>
+      <Name>Effects\Effect1</Name>
+      <Importer>EffectImporter</Importer>
+      <Processor>EffectProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\Effects\Effect1.xnb</Output>
+      <Time>2015-06-14T16:38:48.2754837+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Environment Maps\uffizi_cross.jpg</Source>
+      <Name>Environment Maps\uffizi_cross</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\Environment Maps\uffizi_cross.xnb</Output>
+      <Time>2015-06-14T16:27:54.7421037+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Environment Maps\uffizi_diff_cross.jpg</Source>
+      <Name>Environment Maps\uffizi_diff_cross</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\Environment Maps\uffizi_diff_cross.xnb</Output>
+      <Time>2015-06-14T16:28:07.8738548+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Teapot.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\Models\Teapot_0.xml</Output>
+      <Time>2015-05-12T09:14:44.2454467+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Bunny.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\Models\Bunny_0.xml</Output>
+      <Time>2015-06-14T16:29:32.9187191+02:00</Time>
+    </Item>
+    <Item>
+      <Source>Models\Femalehead.fbx</Source>
+      <Importer>FbxImporter</Importer>
+      <Options>IntermediateFile, DontCacheImportedData</Options>
+      <Output>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\Models\Femalehead_0.xml</Output>
+      <Time>2015-06-14T16:30:04.9045486+02:00</Time>
+    </Item>
+    <BuildSuccessful>true</BuildSuccessful>
+    <Settings>
+      <ContentProjectGUID>{43917FE7-9E86-4044-B227-46257D034EA3}</ContentProjectGUID>
+      <TargetPlatform>Windows</TargetPlatform>
+      <TargetProfile>Reach</TargetProfile>
+      <BuildConfiguration>Debug</BuildConfiguration>
+      <CompressContent>false</CompressContent>
+      <RootDirectory>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3Content\</RootDirectory>
+      <LoggerRootDirectory>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\</LoggerRootDirectory>
+      <IntermediateDirectory>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\</OutputDirectory>
+    </Settings>
+    <Assemblies>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.XImporter.dll</Key>
+        <Value>2011-07-08T02:33:26+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.VideoImporters.dll</Key>
+        <Value>2011-07-08T02:33:24+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.TextureImporter.dll</Key>
+        <Value>2011-07-08T02:33:24+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.FBXImporter.dll</Key>
+        <Value>2011-07-08T02:33:26+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.EffectImporter.dll</Key>
+        <Value>2011-07-08T02:33:24+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Program Files (x86)\Microsoft XNA\XNA Game Studio\v4.0\References\Windows\x86\Microsoft.Xna.Framework.Content.Pipeline.AudioImporters.dll</Key>
+        <Value>2011-07-08T02:33:24+02:00</Value>
+      </Assembly>
+      <Assembly>
+        <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>
+        <Value>2011-09-15T21:02:12.2774674+02:00</Value>
+      </Assembly>
+    </Assemblies>
+  </Asset>
+</XnaContent>
