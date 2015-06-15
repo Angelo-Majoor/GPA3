@@ -18,3 +18,4 @@ C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Prac
 C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
 C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\GraphicsPractical3.exe
 C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\obj\x86\Debug\GraphicsPractical3.pdb
+C:\Users\Angelo 2\Documents\Gametechnologie\Graphics\Jaargang 2014\Practica\Practicum 3\Solution\GraphicsPractical3\GraphicsPractical3\bin\x86\Debug\Content\SpriteFont1.xnb

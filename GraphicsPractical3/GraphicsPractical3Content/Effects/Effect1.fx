@@ -10,7 +10,7 @@ float4x4 View, Projection, World;
 float4x4 WorldInverse;
 
 // The diffuse color for the object
-float4 DiffuseColor;
+//float4 DiffuseColor;
 
 // The ambient color for the object
 float4 AmbientColor;
@@ -21,6 +21,7 @@ float AmbientIntensity;
 float3 PointLight;
 
 float3 LightPositions[MAX_LIGHTS];
+float4 DiffuseColor[MAX_LIGHTS];
 
 //---------------------------------- Input / Output structures ----------------------------------
 
@@ -35,7 +36,9 @@ struct VertexShaderInput
 struct VertexShaderOutput
 {
 	float4 Position2D : POSITION0;
-	float4 Diffuse : TEXCOORD1;
+	float3 Light[MAX_LIGHTS] : TEXCOORD1;
+	//float4 Diffuse : TEXCOORD1;
+	float3 Normal : TEXCOORD0;
 };
 
 //-------------------------------- Technique: Phong ---------------------------------------
@@ -61,26 +64,44 @@ VertexShaderOutput SimpleVertexShader(VertexShaderInput input)
 	// Apply this matrix to the normals
 	float3 intermediateNormal = mul(rotationAndScale, input.Normal);
 	// Normalize the normals
-	input.Normal = normalize(intermediateNormal);
+	output.Normal = normalize(intermediateNormal);
+
+	for (int i = 0; i < MAX_LIGHTS; i++)
+	{
+		vector objectLight = mul(LightPositions[i], WorldInverse);
+		output.Light[i] = normalize(objectLight - input.Position3D);
+	}
 
 	// Determine the light vector
 	// First get the light vector in object space
-	vector objectLight = mul(PointLight, WorldInverse);
-	vector lightDirection = normalize(objectLight - input.Position3D);
+	//vector objectLight = mul(PointLight, WorldInverse);
+	//vector lightDirection = normalize(objectLight - input.Position3D);
 
 	// Diffuse using Lambert
-	output.Diffuse = max(0, dot(input.Normal, lightDirection));
+	//output.Diffuse = max(0, dot(input.Normal, lightDirection));
 
 	return output;
 }
 
 float4 SimplePixelShader(VertexShaderOutput input) : COLOR0
 {
+	float4 ambient = AmbientColor * AmbientIntensity;
+
+	float4 totalDiffuse = float4(0, 0, 0, 0);
+
+	for (int j = 0; j < MAX_LIGHTS; j++)
+	{
+		totalDiffuse += DiffuseColor[j] * saturate(dot(input.Light[j], input.Normal));
+	}
+
+	return totalDiffuse;
+	//return (ambient + totalDiffuse);
+
 	// Compute the final lighting
-	return ((DiffuseColor * input.Diffuse) + (AmbientColor * AmbientIntensity));
+	//return ((DiffuseColor * input.Diffuse) + (AmbientColor * AmbientIntensity));
 }
 
-technique Phong
+technique MultipleLightSources
 {
 	pass Pass0
 	{

@@ -18,6 +18,7 @@ namespace GraphicsPractical3
         // Often used XNA objects
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
+        private SpriteFont spriteFont;
         private FrameRateCounter frameRateCounter;
 
         // Game objects and variables
@@ -31,6 +32,8 @@ namespace GraphicsPractical3
         private VertexPositionNormalTexture[] quadVertices;
         private short[] quadIndices;
         private Matrix quadTransform;
+
+        private Effect effect;
 
         public Game1()
         {
@@ -67,8 +70,10 @@ namespace GraphicsPractical3
             // Create a SpriteBatch object
             this.spriteBatch = new SpriteBatch(this.GraphicsDevice);
 
+            this.spriteFont = Content.Load<SpriteFont>("SpriteFont1");
+
             // Load the effect
-            Effect effect = this.Content.Load<Effect>("Effects/Effect1");
+            this.effect = this.Content.Load<Effect>("Effects/Effect1");
 
             // Load the teapot model
             //this.model = this.Content.Load<Model>("Models/Teapot");
@@ -143,10 +148,10 @@ namespace GraphicsPractical3
 
             // Get the model's only mesh
             ModelMesh mesh = this.model.Meshes[0];
-            Effect effect = mesh.Effects[0];
+            this.effect = mesh.Effects[0];
 
             // Set the effect parameters
-            effect.CurrentTechnique = effect.Techniques["Phong"];
+            this.effect.CurrentTechnique = effect.Techniques["MultipleLightSources"];
 
             // Matrices for 3D perspective projection
             this.camera.SetEffectParameters(effect);
@@ -167,20 +172,36 @@ namespace GraphicsPractical3
             this.modelMaterial.SetEffectParameters(effect);
 
             // Set the value of the point light to use in the effect file
-            effect.Parameters["PointLight"].SetValue(new Vector3(200, 50, 0));
+            this.effect.Parameters["PointLight"].SetValue(new Vector3(200, 50, 0));
             // Set the value of the World matrix to use in the effect file
-            effect.Parameters["World"].SetValue(Matrix.CreateScale(1.0f));
+            this.effect.Parameters["World"].SetValue(Matrix.Identity);
             // Calculate the inverse of the World matrix to use in the effect file
-            effect.Parameters["WorldInverse"].SetValue(Matrix.Invert(Matrix.CreateScale(10.0f)));
+            this.effect.Parameters["WorldInverse"].SetValue(Matrix.Invert(Matrix.CreateScale(10.0f)));
 
-            Vector3[] lights = new Vector3[5];
-            lights[0] = new Vector3(200, 50, 0);
-            lights[1] = new Vector3(0, 50, 200);
-            lights[2] = new Vector3(-200, 50, 0);
-            lights[3] = new Vector3(0, 50, -200);
-            lights[4] = new Vector3(0, 400, 0);
+            int numberOfLights = 5;
 
-            effect.Parameters["LightPositions"].SetValue(lights);
+            Light light1 = new Light(new Vector3(150, 150, 0), Color.Red.ToVector4());
+            Light light2 = new Light(new Vector3(0, 150, -250), Color.Blue.ToVector4());
+            Light light3 = new Light(new Vector3(-150, 150, 0), Color.Yellow.ToVector4());
+            Light light4 = new Light(new Vector3(0, 150, 250), Color.HotPink.ToVector4());
+            Light light5 = new Light(new Vector3(0, 400, 0), Color.Green.ToVector4());
+
+            Vector3[] lightPositions = new Vector3[numberOfLights];
+            lightPositions[0] = light1.lightPosition;
+            lightPositions[1] = light2.lightPosition;
+            lightPositions[2] = light3.lightPosition;
+            lightPositions[3] = light4.lightPosition;
+            lightPositions[4] = light5.lightPosition;
+
+            Vector4[] diffuseColors = new Vector4[numberOfLights];
+            diffuseColors[0] = light1.lightColor;
+            diffuseColors[1] = light2.lightColor;
+            diffuseColors[2] = light3.lightColor;
+            diffuseColors[3] = light4.lightColor;
+            diffuseColors[4] = light5.lightColor;
+
+            this.effect.Parameters["LightPositions"].SetValue(lightPositions);
+            this.effect.Parameters["DiffuseColor"].SetValue(diffuseColors);
 
             // Draw the model
             mesh.Draw();
