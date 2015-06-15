@@ -55,7 +55,7 @@ namespace GraphicsPractical3
             // Flush the changes to the device parameters to the graphics card
             this.graphics.ApplyChanges();
             // Initialize the camera
-            this.camera = new Camera(new Vector3(0, 50, 100), new Vector3(0, 0, 0), new Vector3(0, 1, 0));
+            this.camera = new Camera(new Vector3(0, 30, 100), new Vector3(0, 0, 0), new Vector3(0, 1, 0));
 
             this.IsMouseVisible = true;
 
@@ -71,9 +71,9 @@ namespace GraphicsPractical3
             Effect effect = this.Content.Load<Effect>("Effects/Effect1");
 
             // Load the teapot model
-            this.model = this.Content.Load<Model>("Models/Teapot");
+            //this.model = this.Content.Load<Model>("Models/Teapot");
             //this.model = this.Content.Load<Model>("Models/Bunny");
-            //this.model = this.Content.Load<Model>("Models/Femalehead");
+            this.model = this.Content.Load<Model>("Models/Femalehead");
 
             // Let the model use the effect
             this.model.Meshes[0].MeshParts[0].Effect = effect;
@@ -158,20 +158,29 @@ namespace GraphicsPractical3
             // Set the ambient intensity
             this.modelMaterial.AmbientIntensity = 0.2f;
             // Set the specular color
-            this.modelMaterial.SpecularColor = Color.White;
+            //this.modelMaterial.SpecularColor = Color.White;
             // Set the specular intensity
-            this.modelMaterial.SpecularIntensity = 2.0f;
+            //this.modelMaterial.SpecularIntensity = 2.0f;
             // Set the specular power
-            this.modelMaterial.SpecularPower = 25.0f;
+            //this.modelMaterial.SpecularPower = 25.0f;
             // Apply the elements of the SetEffectParameters method that are being used
             this.modelMaterial.SetEffectParameters(effect);
 
             // Set the value of the point light to use in the effect file
-            effect.Parameters["PointLight"].SetValue(new Vector3(50, 50, 50));
+            effect.Parameters["PointLight"].SetValue(new Vector3(200, 50, 0));
             // Set the value of the World matrix to use in the effect file
-            effect.Parameters["World"].SetValue(Matrix.CreateScale(10.0f));
+            effect.Parameters["World"].SetValue(Matrix.CreateScale(1.0f));
             // Calculate the inverse of the World matrix to use in the effect file
             effect.Parameters["WorldInverse"].SetValue(Matrix.Invert(Matrix.CreateScale(10.0f)));
+
+            Vector3[] lights = new Vector3[5];
+            lights[0] = new Vector3(200, 50, 0);
+            lights[1] = new Vector3(0, 50, 200);
+            lights[2] = new Vector3(-200, 50, 0);
+            lights[3] = new Vector3(0, 50, -200);
+            lights[4] = new Vector3(0, 400, 0);
+
+            effect.Parameters["LightPositions"].SetValue(lights);
 
             // Draw the model
             mesh.Draw();

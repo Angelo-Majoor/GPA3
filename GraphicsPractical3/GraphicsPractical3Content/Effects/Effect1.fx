@@ -20,16 +20,6 @@ float AmbientIntensity;
 // A source of light
 float3 PointLight;
 
-// The cameras eye position
-float3 CameraPosition;
-
-// The specular color of the Blinn Phong shading
-float4 SpecularColor;
-// The specular intensity of the Blinn Phong shading
-float SpecularIntensity;
-// The specular power of the Blinn Phong shading
-float SpecularPower;
-
 float3 LightPositions[MAX_LIGHTS];
 
 //---------------------------------- Input / Output structures ----------------------------------
@@ -45,8 +35,7 @@ struct VertexShaderInput
 struct VertexShaderOutput
 {
 	float4 Position2D : POSITION0;
-	float4 Specular : TEXCOORD1;
-	float4 Diffuse : TEXCOORD2;
+	float4 Diffuse : TEXCOORD1;
 };
 
 //-------------------------------- Technique: Phong ---------------------------------------
@@ -79,17 +68,6 @@ VertexShaderOutput SimpleVertexShader(VertexShaderInput input)
 	vector objectLight = mul(PointLight, WorldInverse);
 	vector lightDirection = normalize(objectLight - input.Position3D);
 
-	// Determine the eye vector
-	// First get the eye vector in object space
-	vector objectEye = mul(CameraPosition, WorldInverse);
-	vector eyeDirection = normalize(objectEye - input.Position3D);
-
-	// Compute the half vector
-	vector halfVector = normalize((lightDirection + eyeDirection) / 2);
-
-	// Specular using Blinn Phong
-	output.Specular = max(0, pow(dot(input.Normal, halfVector), SpecularPower));
-
 	// Diffuse using Lambert
 	output.Diffuse = max(0, dot(input.Normal, lightDirection));
 
@@ -99,7 +77,7 @@ VertexShaderOutput SimpleVertexShader(VertexShaderInput input)
 float4 SimplePixelShader(VertexShaderOutput input) : COLOR0
 {
 	// Compute the final lighting
-	return ((DiffuseColor * input.Diffuse) + (AmbientColor * AmbientIntensity) + (SpecularColor * SpecularIntensity * input.Specular));
+	return ((DiffuseColor * input.Diffuse) + (AmbientColor * AmbientIntensity));
 }
 
 technique Phong
