@@ -119,20 +119,43 @@ namespace GraphicsPractical3
             float timeStep = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // Rotate the camera around the object using the left and right buttons
-            float deltaAngle = 0;
+            float deltaHor = 0;
+            float deltaVer = 0;
+            float deltaRot = 0;
             KeyboardState kbState = Keyboard.GetState();
 
+            if (kbState.IsKeyDown(Keys.A))
+            {
+                deltaHor += -50 * timeStep;
+            }
+            if (kbState.IsKeyDown(Keys.D))
+            {
+                deltaHor += 50 * timeStep;
+            }
+            if (kbState.IsKeyDown(Keys.W))
+            {
+                deltaVer += 50 * timeStep;
+            }
+            if (kbState.IsKeyDown(Keys.S))
+            {
+                deltaVer += -50 * timeStep;
+            }
             if (kbState.IsKeyDown(Keys.Left))
             {
-                deltaAngle += -3 * timeStep;
+                deltaRot += -3 * timeStep;
             }
             if (kbState.IsKeyDown(Keys.Right))
             {
-                deltaAngle += 3 * timeStep;
+                deltaRot += 3 * timeStep;
             }
-            if (deltaAngle != 0)
+            if (deltaHor != 0 || deltaVer != 0)
             {
-                this.camera.Eye = Vector3.Transform(this.camera.Eye, Matrix.CreateRotationY(deltaAngle));
+                this.camera.Eye += new Vector3(deltaHor, 0, deltaVer);
+                this.camera.Focus += new Vector3(deltaHor, 0, deltaVer);
+            }
+            if (deltaRot != 0)
+            {
+                this.camera.Eye = Vector3.Transform(this.camera.Eye, Matrix.CreateRotationY(deltaRot));
             }
 
             // Update the window title
@@ -172,7 +195,7 @@ namespace GraphicsPractical3
             this.modelMaterial.SetEffectParameters(effect);
 
             // Set the value of the point light to use in the effect file
-            this.effect.Parameters["PointLight"].SetValue(new Vector3(200, 50, 0));
+            this.effect.Parameters["PointLight"].SetValue(new Vector3(50, 50, 50));
             // Set the value of the World matrix to use in the effect file
             this.effect.Parameters["World"].SetValue(Matrix.Identity);
             // Calculate the inverse of the World matrix to use in the effect file
@@ -180,11 +203,11 @@ namespace GraphicsPractical3
 
             int numberOfLights = 5;
 
-            Light light1 = new Light(new Vector3(150, 150, 0), Color.Red.ToVector4());
-            Light light2 = new Light(new Vector3(0, 150, -250), Color.Blue.ToVector4());
-            Light light3 = new Light(new Vector3(-150, 150, 0), Color.Yellow.ToVector4());
-            Light light4 = new Light(new Vector3(0, 150, 250), Color.HotPink.ToVector4());
-            Light light5 = new Light(new Vector3(0, 400, 0), Color.Green.ToVector4());
+            Light light1 = new Light(new Vector3(150, 150, 0), new Vector3(0, 0, 0), Color.Red.ToVector4());
+            Light light2 = new Light(new Vector3(0, 150, -250), new Vector3(0, 0, 0), Color.Blue.ToVector4());
+            Light light3 = new Light(new Vector3(-150, 150, 0), new Vector3(0, 0, 0), Color.Yellow.ToVector4());
+            Light light4 = new Light(new Vector3(0, 150, 250), new Vector3(0, 0, 0), Color.HotPink.ToVector4());
+            Light light5 = new Light(new Vector3(0, 400, 0), new Vector3(0, 0, 0), Color.Green.ToVector4());
 
             Vector3[] lightPositions = new Vector3[numberOfLights];
             lightPositions[0] = light1.lightPosition;

@@ -18,7 +18,7 @@ float4 AmbientColor;
 float AmbientIntensity;
 
 // A source of light
-float3 PointLight;
+//float3 PointLight;
 
 float3 LightPositions[MAX_LIGHTS];
 float4 DiffuseColor[MAX_LIGHTS];
@@ -65,7 +65,7 @@ VertexShaderOutput SimpleVertexShader(VertexShaderInput input)
 	float3 intermediateNormal = mul(rotationAndScale, input.Normal);
 	// Normalize the normals
 	output.Normal = normalize(intermediateNormal);
-
+	
 	for (int i = 0; i < MAX_LIGHTS; i++)
 	{
 		vector objectLight = mul(LightPositions[i], WorldInverse);
@@ -95,10 +95,6 @@ float4 SimplePixelShader(VertexShaderOutput input) : COLOR0
 	}
 
 	return totalDiffuse;
-	//return (ambient + totalDiffuse);
-
-	// Compute the final lighting
-	//return ((DiffuseColor * input.Diffuse) + (AmbientColor * AmbientIntensity));
 }
 
 technique MultipleLightSources
